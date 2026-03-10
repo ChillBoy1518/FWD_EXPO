@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Sizzle Space Billing System</title>
+
+<!-- CO1: Linking External CSS File -->
+<link rel="stylesheet" href="style.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+</head>
+
+<body>
+
+<!-- CO1: Sidebar Navigation Layout using HTML -->
+
+<div class="sidebar">
+
+<div class="brand">
+<h1>🔥 Sizzle Space</h1>
+<p class="subtitle">BILLING SYSTEM</p>
+</div>
+
+<!-- CO4: Navigation using JavaScript DOM -->
+<p onclick="showDashboard()">📊 Dashboard</p>
+<p onclick="showBilling()">💳 Billing</p>
+<p onclick="showInvoices()">🧾 Invoices</p>
+<p onclick="logout()">🚪 Logout</p>
+
+</div>
+
+<div class="main">
+
+<button onclick="toggleTheme()">🌙 Toggle Theme</button><br>
+
+<!-- CO1: Dashboard UI Layout -->
+
+<div id="dashboard">
+
+<div class="banner">
+
+<h1>🔥 Welcome to Sizzle Space</h1>
+<p>Manage your restaurant billing easily and track your sales.</p>
+
+<!-- CO4: Live Clock using DOM -->
+<div class="clock" id="clock"></div>
+
+</div>
+
+<div class="cards">
+
+<div class="card">
+<h3>Total Invoices</h3>
+<h2 id="totalInvoices">0</h2>
+</div>
+
+<div class="card">
+<h3>Total Sales</h3>
+<h2>₹<span id="totalSales">0</span></h2>
+</div>
+
+<div class="card">
+<h3>Today's Sales</h3>
+<h2>₹<span id="todaySales">0</span></h2>
+</div>
+
+</div>
+
+</div>
+
+<!-- CO2: HTML Billing Form for User Input -->
+
+<div id="billing" style="display:none">
+
+<h2>Create Bill</h2>
+
+<h3>Invoice No: <span id="invoiceDisplay">-</span></h3>
+
+<input id="customer" placeholder="Customer Name">
+
+<!-- CO4: Menu Category Filter -->
+
+<div>
+<button onclick="filterMenu('all')">All</button>
+<button onclick="filterMenu('veg')">Veg</button>
+<button onclick="filterMenu('nonveg')">Non-Veg</button>
+<button onclick="filterMenu('biryani')">Biryani</button>
+<button onclick="filterMenu('drinks')">Drinks</button>
+</div>
+
+<select id="name">
+<option value="">Select Item</option>
+</select>
+
+<input id="qty" type="number" placeholder="Qty">
+<input id="discount" type="number" placeholder="Discount">
+
+<select id="payment">
+<option>Cash</option>
+<option>Card</option>
+<option>UPI</option>
+</select>
+
+<button onclick="addItem()">Add Item</button>
+<button onclick="clearBill()">Clear Bill</button>
+
+<!-- CO1: Table Layout for Bill Items -->
+
+<table>
+
+<thead>
+<tr>
+<th>Item</th>
+<th>Price</th>
+<th>Qty</th>
+<th>Total</th>
+<th>Delete</th>
+</tr>
+</thead>
+
+<tbody id="billTable"></tbody>
+
+</table>
+
+<h3>Subtotal ₹<span id="subtotal">0</span></h3>
+<h3>Tax (5%) ₹<span id="tax">0</span></h3>
+<h3>Final Total ₹<span id="grandTotal">0</span></h3>
+
+<button onclick="saveBill()">Save Bill</button>
+<button onclick="printBill()">Print</button>
+<button onclick="downloadPDF()">Download PDF</button>
+
+</div>
+
+<!-- CO4: Invoice Management using JavaScript DOM -->
+
+<div id="invoices" style="display:none">
+
+<h2>Invoices</h2>
+
+<input id="searchInvoice" placeholder="Search Invoice" onkeyup="searchInvoice()">
+
+<table>
+
+<thead>
+<tr>
+<th>Invoice</th>
+<th>Customer</th>
+<th>Total</th>
+<th>Date</th>
+<th>Payment</th>
+<th>Delete</th>
+</tr>
+</thead>
+
+<tbody id="invoiceTable"></tbody>
+
+</table>
+
+</div>
+
+</div>
+
+<!-- CO3 & CO4: Linking JavaScript File for Billing Logic and DOM Manipulation -->
+<script src="script.js"></script>
+
+</body>
+</html>

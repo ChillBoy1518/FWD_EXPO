@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Register - Sizzle Space</title>
+
+<style>
+
+body{
+margin:0;
+font-family:'Segoe UI';
+background:linear-gradient(135deg,#0f172a,#1e3a8a);
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.box{
+background:white;
+padding:40px;
+border-radius:15px;
+width:320px;
+text-align:center;
+box-shadow:0 10px 40px rgba(0,0,0,0.3);
+}
+
+input{
+width:100%;
+padding:10px;
+margin:10px 0;
+border-radius:8px;
+border:1px solid #ccc;
+}
+
+button{
+width:100%;
+padding:10px;
+background:#3b82f6;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+
+button:hover{
+background:#2563eb;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<h2>🔥 Register</h2>
+
+<input id="newUser" placeholder="Username">
+<input id="newPass" type="password" placeholder="Password">
+
+<button onclick="register()">Register</button>
+
+<p>Already have account? <a href="login.html">Login</a></p>
+
+</div>
+
+<script>
+
+function register(){
+
+let user=document.getElementById("newUser").value
+let pass=document.getElementById("newPass").value
+
+if(!user||!pass){
+alert("Fill all fields")
+return
+}
+
+let users=JSON.parse(localStorage.getItem("users"))||[]
+
+users.push({username:user,password:pass})
+
+localStorage.setItem("users",JSON.stringify(users))
+
+alert("Account created!")
+
+window.location.href="login.html"
+
+}
+
+</script>
+
+</body>
+</html>

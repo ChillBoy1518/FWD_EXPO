@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login - Sizzle Space</title>
+
+<style>
+
+body{
+margin:0;
+font-family:'Segoe UI';
+background:linear-gradient(135deg,#0f172a,#1e3a8a);
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.box{
+background:white;
+padding:40px;
+border-radius:15px;
+width:320px;
+text-align:center;
+box-shadow:0 10px 40px rgba(0,0,0,0.3);
+}
+
+input{
+width:100%;
+padding:10px;
+margin:10px 0;
+border-radius:8px;
+border:1px solid #ccc;
+}
+
+button{
+width:100%;
+padding:10px;
+background:#3b82f6;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+
+button:hover{
+background:#2563eb;
+}
+
+.error{
+color:red;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<h2>🔥 Sizzle Space</h2>
+<p>BILLING SYSTEM</p>
+
+<input id="username" placeholder="Username">
+<input id="password" type="password" placeholder="Password">
+
+<button onclick="login()">Login</button>
+
+<p class="error" id="error"></p>
+
+<p>No account? <a href="register.html">Register</a></p>
+
+</div>
+
+<script>
+
+function login(){
+
+let user=document.getElementById("username").value
+let pass=document.getElementById("password").value
+
+let users=JSON.parse(localStorage.getItem("users"))||[]
+
+let valid=false
+
+users.forEach(u=>{
+if(u.username===user && u.password===pass){
+valid=true
+}
+})
+
+if(valid){
+
+localStorage.setItem("loggedIn","true")
+
+window.location.href="index.html"
+
+}else{
+
+document.getElementById("error").innerText="Invalid Login"
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
